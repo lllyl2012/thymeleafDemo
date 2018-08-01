@@ -111,11 +111,11 @@
 
 
 <hr>
-<form th:action="@{/submitDemo}" method="post">
+<form th:action="@{/submitDemo}" th:object="${user}" method="post">
 	<input type="text" name="username" th:value="${name}">
 	<!-- <input type="text" name="username" th:field="${name}"> 如果这么写的话${name}的属性读取不出来，还没搞清楚原因 -->
-	<input type="text" name="money" th:field="${user.money}">
-	<input type="text" name="time" th:field="${user.time}">
+	<input type="text" name="money" th:field="*{money}"><!-- money和下面的time用了*{}，表示它是从th:object的属性中取出来的 -->
+	<input type="text" name="time" th:field="*{time}">
 	<input type="submit" value="提交">
 </form>
 <!-- 尚未搞清楚th:field和th:value的区别 -->
