@@ -95,6 +95,11 @@
 <p th:if="${user.money < 10}">金币比10小</p>
 <!-- if比较，貌似没有else
 	还有一个th:unless和if正好相反-->
+	
+<th:block th:with="score=${user.money}"><!-- th:with 声明局部变量 -->
+	<p th:if="${score} ge 60">大于60</p>
+</th:block>	
+<!-- th:block 外层包裹  有时候需要在代码外部加层条件，但写div之类的又影响样式，就用这个-->
 
 <div th:switch="${name}"> 
 	<p th:case="应老师">应老师</p>
@@ -120,5 +125,8 @@
 </form>
 <!-- 尚未搞清楚th:field和th:value的区别 -->
 
+
+<!-- 模板操作 -->
+<div th:include="/footer :: footer1"></div>
 </body>
 </html>
